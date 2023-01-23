@@ -3,5 +3,6 @@ public class Main {
 
         System.out.println("Someday it will works :)");
         System.out.println("a teraz działa?");
+        System.out.println("e o moze jednak kurwa?");
     }
 }
