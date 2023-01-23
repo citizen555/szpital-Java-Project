@@ -1,0 +1,37 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MainMenuPanel extends JFrame {
+    private JButton btnClose;
+    private JPanel optionsPanel;
+    private JButton btnLogOut;
+    private JButton btnPatients;
+    private JButton btnAdmissions;
+    private JButton btnDoctors;
+    private JLabel lbLogin;
+
+    public MainMenuPanel(String correctLogin) {
+        super("Szpitalex 1.0   Wybierz działanie");
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(optionsPanel);
+        this.pack();
+        lbLogin.setText(correctLogin);
+    btnClose.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dispose();
+        }
+    });
+        btnLogOut.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(optionsPanel,"Wylogowano pomyślnie urzytkownika "+correctLogin);
+                JFrame loginPage = new LoginPanel();
+                loginPage.setVisible(true);
+                dispose();
+            }
+        });
+    }
+}
