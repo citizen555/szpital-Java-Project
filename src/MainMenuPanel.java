@@ -17,6 +17,9 @@ public class MainMenuPanel extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(optionsPanel);
         this.pack();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+
         lbLogin.setText(correctLogin);
     btnClose.addActionListener(new ActionListener() {
         @Override
@@ -30,6 +33,15 @@ public class MainMenuPanel extends JFrame {
                 JOptionPane.showMessageDialog(optionsPanel,"Wylogowano pomyślnie urzytkownika "+correctLogin);
                 JFrame loginPage = new LoginPanel();
                 loginPage.setVisible(true);
+                dispose();
+            }
+        });
+        btnDoctors.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFrame doctorsPanel = new DoctorsPanel();
+                doctorsPanel.setVisible(true);
                 dispose();
             }
         });

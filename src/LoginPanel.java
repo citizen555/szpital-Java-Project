@@ -16,25 +16,27 @@ public class LoginPanel extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
+        this.setSize(400,350);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
 
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String correctLogin="admin";
-                String correctPassword="1234";
 
-                if (!tfLogin.getText().equals(correctLogin)) {
+
+                if (!tfLogin.getText().equals(Main.correctLogin)) {
                     JOptionPane.showMessageDialog(mainPanel,"Dane logowania są niepoprawne");
                     tfLogin.setText("");
                     pfPassword.setText("");
-                }else if(!pfPassword.getText().equals(correctPassword)){
+                }else if(!pfPassword.getText().equals(Main.correctPassword)){
                     JOptionPane.showMessageDialog(mainPanel,"Dane logowania są niepoprawne");
                     tfLogin.setText("");
                     pfPassword.setText("");
                 }else {
                     System.out.println("Zalogowano");
-                    JFrame options = new MainMenuPanel(correctLogin);
+                    JFrame options = new MainMenuPanel(Main.correctLogin);
                     options.setVisible(true);
                     dispose();
                 }
