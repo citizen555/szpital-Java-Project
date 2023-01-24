@@ -2,18 +2,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DoctorsPanel extends JFrame{
+public class PatientsPanel extends JFrame{
+    private JPanel patientsPanel;
     private JButton btnBack;
-    private JPanel doctorsPanel;
 
-
-    public DoctorsPanel() {
-
+    public PatientsPanel(){
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(doctorsPanel);
+        this.setContentPane(patientsPanel);
         this.pack();
         this.setLocationRelativeTo(null);
-
         btnBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -24,7 +21,4 @@ public class DoctorsPanel extends JFrame{
             }
         });
     }
-
-
-
 }

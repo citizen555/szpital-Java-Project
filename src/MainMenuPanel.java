@@ -45,5 +45,21 @@ public class MainMenuPanel extends JFrame {
                 dispose();
             }
         });
+        btnAdmissions.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame AdmissionsPanel = new AdmissionsPanel();
+                AdmissionsPanel.setVisible(true);
+                dispose();
+            }
+        });
+        btnPatients.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame PatientsPanel = new PatientsPanel();
+                PatientsPanel.setVisible(true);
+                dispose();
+            }
+        });
     }
 }

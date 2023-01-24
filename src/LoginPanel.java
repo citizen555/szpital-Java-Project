@@ -26,17 +26,17 @@ public class LoginPanel extends JFrame{
 
 
 
-                if (!tfLogin.getText().equals(Main.correctLogin)) {
+                if (!tfLogin.getText().equals(CorrectLoginData.getCorrectLogin())) {
                     JOptionPane.showMessageDialog(mainPanel,"Dane logowania są niepoprawne");
                     tfLogin.setText("");
                     pfPassword.setText("");
-                }else if(!pfPassword.getText().equals(Main.correctPassword)){
+                }else if(!pfPassword.getText().equals(CorrectLoginData.getCorrectPassword())){
                     JOptionPane.showMessageDialog(mainPanel,"Dane logowania są niepoprawne");
                     tfLogin.setText("");
                     pfPassword.setText("");
                 }else {
                     System.out.println("Zalogowano");
-                    JFrame options = new MainMenuPanel(Main.correctLogin);
+                    JFrame options = new MainMenuPanel(CorrectLoginData.getCorrectLogin());
                     options.setVisible(true);
                     dispose();
                 }
