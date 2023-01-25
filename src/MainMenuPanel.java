@@ -31,6 +31,7 @@ public class MainMenuPanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(optionsPanel,"Wylogowano pomyślnie urzytkownika "+correctLogin);
+                System.out.println("Wylogowano");
                 JFrame loginPage = new LoginPanel();
                 loginPage.setVisible(true);
                 dispose();
