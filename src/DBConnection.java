@@ -4,27 +4,27 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class DBConnection {
-    String url;
-    String user;
-    String password;
+    static String url;
+    static String user;
+    static String password;
 
     public DBConnection() {
-        this.url = "jdbc:sqlserver://localhost;encrypt=true;databaseName=Test;integratedSecurity=true;trustServerCertificate=true";
-        this.user = "DESKTOP-8JKBJVV\\Lenovo_IT2";
-        this.password = "";
-    }
-
-    public void dbConnect() {
+        //url = "jdbc:sqlserver://localhost;encrypt=true;databaseName=Test;integratedSecurity=true;trustServerCertificate=true";
+        url = "jdbc:sqlserver://localhost;databaseName=Test;integratedSecurity=true;";
+        user = "DESKTOP-8JKBJVV\\Lenovo_IT2";
+        password = "";
+        System.out.println();
+        //System.out.println(url);
 
         try {
-            Connection dbConnection = DriverManager.getConnection(url);
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection dbConnection=null;
+            dbConnection = DriverManager.getConnection(url);
             System.out.println("Połączono z Bazą");
-        }catch(SQLException e){
+        }catch(SQLException | ClassNotFoundException ex) {
             System.out.println("Połączenie nieudane: ");
-        };
-
-
-
+            ex.printStackTrace();
+        }
     }
 
 }
