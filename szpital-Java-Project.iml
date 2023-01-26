@@ -10,12 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://C:/JDBC/sqljdbc_11.2enu/mssql-jdbc-11.2.3.jre17.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mssql-jdbc-11.2.3.jre17" level="application" />
   </component>
 </module>

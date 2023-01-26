@@ -9,21 +9,30 @@ public class DBConnection {
     static String password;
 
     public DBConnection() {
-        //url = "jdbc:sqlserver://localhost;encrypt=true;databaseName=Test;integratedSecurity=true;trustServerCertificate=true";
-        url = "jdbc:sqlserver://localhost;databaseName=Test;integratedSecurity=true;";
-        user = "DESKTOP-8JKBJVV\\Lenovo_IT2";
-        password = "";
-        System.out.println();
-        //System.out.println(url);
 
+        url = "jdbc:mysql://localhost:3306/test";
+        user = "root";
+        password = "";
+
+        Connection dbConnection=null;
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection dbConnection=null;
-            dbConnection = DriverManager.getConnection(url);
+            dbConnection = DriverManager.getConnection(url,user,password);
             System.out.println("Połączono z Bazą");
-        }catch(SQLException | ClassNotFoundException ex) {
+            dbConnectionClose(dbConnection);
+        }catch(SQLException e) {
             System.out.println("Połączenie nieudane: ");
-            ex.printStackTrace();
+            e.printStackTrace();
+        }
+
+    }
+
+    public void dbConnectionClose(Connection dbConnection){
+        try {
+            dbConnection.close();
+            System.out.println("Połączenie z baza danych zamknięte");
+        } catch (SQLException e) {
+            System.out.println("Błąd przy zamknięciu bazy:");
+            e.printStackTrace();
         }
     }
 
