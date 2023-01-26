@@ -21,12 +21,14 @@ public class MainMenuPanel extends JFrame {
         this.setLocationRelativeTo(null);
 
         lbLogin.setText(correctLogin);
-    btnClose.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
+        btnClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DBConnection.dbConnectionClose();
+                dispose();
         }
-    });
+        });
         btnLogOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,6 +36,8 @@ public class MainMenuPanel extends JFrame {
                 System.out.println("Wylogowano");
                 JFrame loginPage = new LoginPanel();
                 loginPage.setVisible(true);
+
+                DBConnection.dbConnectionClose();
                 dispose();
             }
         });

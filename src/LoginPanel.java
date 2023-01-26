@@ -36,6 +36,8 @@ public class LoginPanel extends JFrame{
                     pfPassword.setText("");
                 }else {
                     System.out.println("Zalogowano");
+                    DBConnection.dbConnect();
+
                     JFrame options = new MainMenuPanel(CorrectLoginData.getCorrectLogin());
                     options.setVisible(true);
                     dispose();

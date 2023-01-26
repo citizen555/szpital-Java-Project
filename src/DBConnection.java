@@ -4,29 +4,22 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class DBConnection {
-    static String url;
-    static String user;
-    static String password;
+    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String user = "root";
+    private static final String password = "";
+    private static Connection dbConnection=null;
 
-    public DBConnection() {
+    public static void dbConnect(){
 
-        url = "jdbc:mysql://localhost:3306/test";
-        user = "root";
-        password = "";
-
-        Connection dbConnection=null;
         try {
             dbConnection = DriverManager.getConnection(url,user,password);
             System.out.println("Połączono z Bazą");
-            dbConnectionClose(dbConnection);
         }catch(SQLException e) {
             System.out.println("Połączenie nieudane: ");
             e.printStackTrace();
         }
-
     }
-
-    public void dbConnectionClose(Connection dbConnection){
+    public static void dbConnectionClose(){
         try {
             dbConnection.close();
             System.out.println("Połączenie z baza danych zamknięte");
