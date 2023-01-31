@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class LoginPanel extends JFrame{
     private JPanel mainPanel;
@@ -35,15 +36,19 @@ public class LoginPanel extends JFrame{
                     tfLogin.setText("");
                     pfPassword.setText("");
                 }else {
-                    System.out.println("Zalogowano");
-                    DBConnection.dbConnect();
+                    boolean status=DBConnection.dbConnect();
+                        if (status){
+                            System.out.println("Zalogowano");
 
-                    JFrame options = new MainMenuPanel(CorrectLoginData.getCorrectLogin());
-                    options.setVisible(true);
-                    dispose();
+                            JFrame options = new MainMenuPanel(CorrectLoginData.getCorrectLogin());
+                            options.setVisible(true);
+                            dispose();
+
+                        }else {
+                            JOptionPane.showMessageDialog(mainPanel,"Błąd połączenia z bazą, logowanie nie udane ");
+                        }
+
                 }
-
-
             }
         });
         btnClose.addActionListener(new ActionListener() {

@@ -7,16 +7,18 @@ public class DBConnection {
     private static final String url = "jdbc:mysql://localhost:3306/test";
     private static final String user = "root";
     private static final String password = "";
-    private static Connection dbConnection=null;
+    public static Connection dbConnection=null;
 
-    public static void dbConnect(){
+    public static boolean dbConnect(){
 
         try {
             dbConnection = DriverManager.getConnection(url,user,password);
             System.out.println("Połączono z Bazą");
+            return true;
         }catch(SQLException e) {
             System.out.println("Połączenie nieudane: ");
             e.printStackTrace();
+            return false;
         }
     }
     public static void dbConnectionClose(){
