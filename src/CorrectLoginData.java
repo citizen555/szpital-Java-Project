@@ -1,7 +1,7 @@
 public class CorrectLoginData {
 
-    private static final String correctLogin = "admin";
-    private static final String correctPassword="1234";
+    private static final String correctLogin = "1";
+    private static final String correctPassword="1";
 
 
     public static String getCorrectLogin() {

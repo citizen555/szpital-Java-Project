@@ -2,12 +2,10 @@ import java.sql.Date;
 
 public class DoctorsDataTable extends DoctorsPanel {
 
-    private int idDoctor, salary;
-    private String firstName, surname,  birthPlace, adress, postcode, city, phoneNumber, email, pesel;
-    private Date birthDate;
+    public int idDoctor, salary;
+    public String firstName, surname,  birthPlace, adres, postcode, city, phoneNumber, email, pesel, birthDate;
 
-
-    public DoctorsDataTable(int idDoctor, String firstName, String surname, Date birthDate, String birthPlace, String pesel, String adress, String postcode, String city, String phoneNumber, String email, int salary){
+    public DoctorsDataTable(int idDoctor, String firstName, String surname, String birthDate, String birthPlace, String pesel, String adres, String postcode, String city, String phoneNumber, String email, int salary){
 
         this.idDoctor=idDoctor;
         this.firstName =firstName;
@@ -15,7 +13,7 @@ public class DoctorsDataTable extends DoctorsPanel {
         this.birthDate=birthDate;
         this.birthPlace=birthPlace;
         this.pesel=pesel;
-        this.adress=adress;
+        this.adres=adres;
         this.postcode=postcode;
         this.city=city;
         this.phoneNumber=phoneNumber;
@@ -41,7 +39,7 @@ public class DoctorsDataTable extends DoctorsPanel {
         return surname;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
@@ -49,8 +47,8 @@ public class DoctorsDataTable extends DoctorsPanel {
         return birthPlace;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAdres() {
+        return adres;
     }
 
     public String getPostcode() {
