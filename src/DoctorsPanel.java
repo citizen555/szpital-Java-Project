@@ -146,7 +146,7 @@ public class DoctorsPanel extends JFrame{
     public void showData(){
         try{
 
-            String sql="SELECT * From lekarze";
+            String sql="SELECT * From lekarze;";
             statement = DBConnection.dbConnection.prepareStatement(sql);
             result = statement.executeQuery();
 
@@ -171,7 +171,6 @@ public class DoctorsPanel extends JFrame{
             e.printStackTrace();
         }
     }
-
 
 }
 
