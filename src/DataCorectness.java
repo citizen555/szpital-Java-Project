@@ -41,6 +41,18 @@ public abstract class DataCorectness {
             return false;
         }
     }
+    //Hour
+    public static boolean time(String data){
+        String format = "hh-mm-ss";
+        try {
+            SimpleDateFormat timeFormat = new SimpleDateFormat(format);
+            timeFormat.setLenient(false);
+            timeFormat.parse(data);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
     //Postcode
     public static boolean postCode(String data){
         Pattern pattern = Pattern.compile("^[0-9]{2}-[0-9]{3}$");
@@ -59,16 +71,22 @@ public abstract class DataCorectness {
         Matcher matcher = pattern.matcher(data);
         return matcher.matches();
     }
+    //String contains number or specal character
     public static boolean containsNumberAndChars(String data){
         Pattern pattern = Pattern.compile("[^a-zA-Z\\s]");
         Matcher matcher = pattern.matcher(data);
         return !matcher.find();
     }
-    public static boolean containsNumber(String data){
-        Pattern pattern = Pattern.compile("[0-9]");
-        Matcher matcher = pattern.matcher(data);
-        return !matcher.find();
+    //String contains number
+    public static boolean salary(String data){
+        try {
+            Integer.parseInt(data);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
+
 }
 
 

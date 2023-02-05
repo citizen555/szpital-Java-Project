@@ -158,7 +158,7 @@ public class DoctorsPanel extends JFrame{
                     JOptionPane.showMessageDialog(doctorsPanel, "Miasto nie moze zawierać cyfr lub znaków specjalnych");
                     return;
                 }
-                if(!DataCorectness.containsNumber(tfSalary.getText())){
+                if(!DataCorectness.salary(tfSalary.getText())){
                     JOptionPane.showMessageDialog(doctorsPanel, "Wynagrodzenie musi być liczbą wymierną");
                     return;
                 }

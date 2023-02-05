@@ -98,6 +98,29 @@ public class AdmissionsPanel extends JFrame{
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if(!DataCorectness.pesel(tfPesel.getText())){
+                    JOptionPane.showMessageDialog(admissionsPanel, "Pesel musi zawierać 11 cyfr");
+                    return;
+                }
+                if(!DataCorectness.salary(tfDiagnosis.getText())){
+                    JOptionPane.showMessageDialog(admissionsPanel, "ID diagnozy nie może zawierać liter lub znaków");
+                    return;
+                }
+                if(!DataCorectness.salary(tfDoctor.getText())){
+                    JOptionPane.showMessageDialog(admissionsPanel, "ID lekarza prowadzącego nie może zawierać liter lub znaków");
+                    return;
+                }
+                if(!DataCorectness.date(tfDate.getText())){
+                    JOptionPane.showMessageDialog(admissionsPanel, "Data musi być w formacie rrrr-mm-dd");
+                    return;
+                }
+                if(!DataCorectness.time(tfHour.getText())){
+                    JOptionPane.showMessageDialog(admissionsPanel, "Data musi być w formacie rrrr-mm-dd");
+                    return;
+                }
+
+
                 try{
                     String sql="INSERT INTO  `przyjecie` (`PeselPacjenta`,`IDdiagnozy`, `IDLekarzProwadzacy`, `DataPrzyjecia`, `GodzinaPrzyjecia`) VALUES ('"+tfPesel.getText()+"','"+tfDiagnosis.getText()+"','"+tfDoctor.getText()+"','"+tfDate.getText()+"','"+tfHour.getText()+"');";
                     statement = DBConnection.dbConnection.prepareStatement(sql);
