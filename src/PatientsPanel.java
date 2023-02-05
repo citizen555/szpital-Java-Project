@@ -98,6 +98,45 @@ public class PatientsPanel extends JFrame{
             }
         });
 
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel tempModel=(DefaultTableModel) tablePatients.getModel();
+                int selectedRow=tablePatients.getSelectedRow();
+
+                if(selectedRow==-1){
+                    JOptionPane.showMessageDialog(tablePatients,"Aby usunąć dane, wybierz wiersz z tabeli");
+                }else{
+                    try{
+                        String sql="DELETE FROM `pacjenci` WHERE `Pesel` = "+tempModel.getValueAt(selectedRow,0).toString()+";";
+                        statement = DBConnection.dbConnection.prepareStatement(sql);
+                        statement.executeUpdate(sql);
+                        showData();
+                        JOptionPane.showMessageDialog(tablePatients,"Dane usunięto poprawnie");
+                        statement.close();
+                    }catch (SQLException ex){
+                        ex.printStackTrace();
+                    }
+
+                }
+                showData();
+            }
+        });
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    String sql="INSERT INTO  `pacjenci` (`Pesel`,`Imie`, `Nazwisko`, `DataUrodzenia`, `MiejsceUrodzenia`,`AdresZamieszkania`,`KodPocztowy`,`Miasto`,`Telefon`,`Email`) VALUES ('"+tfPesel.getText()+"','"+tfName.getText()+"','"+tfSurname.getText()+"','"+tfBirthDate.getText()+"','"+tfBirthPlace.getText()+"','"+tfAdres.getText()+"','"+tfPostCode.getText()+"','"+tfCity.getText()+"','"+tfTelephone.getText()+"','"+tfEmail.getText()+"');";
+                    statement = DBConnection.dbConnection.prepareStatement(sql);
+                    statement.executeUpdate(sql);
+                    showData();
+                    JOptionPane.showMessageDialog(tablePatients,"Dane dodano poprawnie");
+                    statement.close();
+                }catch (SQLException ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 
