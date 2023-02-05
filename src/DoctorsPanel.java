@@ -126,6 +126,44 @@ public class DoctorsPanel extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                if(!DataCorectness.name(tfName.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Imie musi zawierać wyłacznie litery");
+                    return;
+                }
+                if(!DataCorectness.name(tfSurname.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Nazwisko musi zawierać wyłacznie litery");
+                    return;
+                }
+                if(!DataCorectness.date(tfBirthDate.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Data musi być w formacie rrrr-mm-dd");
+                    return;
+                }
+                if(!DataCorectness.pesel(tfPesel.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Pesel musi zawierać 11 cyfr");
+                    return;
+                }
+                if(!DataCorectness.postCode(tfPostCode.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Kod pocztowy musi być w formacie nn-nnn");
+                    return;
+                }
+                if(!DataCorectness.email(tfEmail.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Email musi zawierać @");
+                    return;
+                }
+                if(!DataCorectness.telephone(tfTelephone.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Numer telefonu musi zawierać 9 cyfr (bez numeru kierunkowego)");
+                    return;
+                }
+                if(!DataCorectness.containsNumberAndChars(tfCity.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Miasto nie moze zawierać cyfr lub znaków specjalnych");
+                    return;
+                }
+                if(!DataCorectness.containsNumber(tfSalary.getText())){
+                    JOptionPane.showMessageDialog(doctorsPanel, "Wynagrodzenie musi być liczbą wymierną");
+                    return;
+                }
+
+
                 try{
                     String sql="INSERT INTO  `lekarze` (`Imie`, `Nazwisko`, `DataUrodzenia`, `MiejsceUrodzenia`,`Pesel`,`AdresZamieszkania`,`KodPocztowy`,`Miasto`,`Telefon`,`Email`,`Wynagrodzenie`) VALUES ('"+tfName.getText()+"','"+tfSurname.getText()+"','"+tfBirthDate.getText()+"','"+tfBirthPlace.getText()+"','"+tfPesel.getText()+"','"+tfAdres.getText()+"','"+tfPostCode.getText()+"','"+tfCity.getText()+"','"+tfTelephone.getText()+"','"+tfEmail.getText()+"','"+Integer.parseInt(tfSalary.getText())+"');";
                     statement = DBConnection.dbConnection.prepareStatement(sql);

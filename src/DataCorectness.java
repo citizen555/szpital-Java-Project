@@ -53,10 +53,22 @@ public abstract class DataCorectness {
         Matcher matcher = pattern.matcher(data);
         return matcher.matches();
     }
+    //telephone number
     public static boolean telephone(String data){
         Pattern pattern = Pattern.compile("^[0-9]{9}$");
         Matcher matcher = pattern.matcher(data);
         return matcher.matches();
     }
-
+    public static boolean containsNumberAndChars(String data){
+        Pattern pattern = Pattern.compile("[^a-zA-Z\\s]");
+        Matcher matcher = pattern.matcher(data);
+        return !matcher.find();
+    }
+    public static boolean containsNumber(String data){
+        Pattern pattern = Pattern.compile("[0-9]");
+        Matcher matcher = pattern.matcher(data);
+        return !matcher.find();
+    }
 }
+
+

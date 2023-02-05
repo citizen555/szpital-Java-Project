@@ -154,6 +154,10 @@ public class PatientsPanel extends JFrame{
                     JOptionPane.showMessageDialog(patientsPanel, "Numer telefonu musi zawierać 9 cyfr (bez numeru kierunkowego)");
                     return;
                 }
+                if(!DataCorectness.containsNumberAndChars(tfCity.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Miasto nie moze zawierać cyfr lub znaków specjalnych");
+                    return;
+                }
 
 
                 try{
