@@ -138,6 +138,24 @@ public class PatientsPanel extends JFrame{
                     JOptionPane.showMessageDialog(patientsPanel, "Nazwisko musi zawierać wyłacznie litery");
                     return;
                 }
+                if(!DataCorectness.date(tfBirthDate.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Data musi być w formacie rrrr-mm-dd");
+                    return;
+                }
+                if(!DataCorectness.postCode(tfPostCode.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Kod pocztowy musi być w formacie nn-nnn");
+                    return;
+                }
+                if(!DataCorectness.email(tfEmail.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Email musi zawierać @");
+                    return;
+                }
+                if(!DataCorectness.telephone(tfTelephone.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Numer telefonu musi zawierać 9 cyfr (bez numeru kierunkowego)");
+                    return;
+                }
+
+
                 try{
                     String sql="INSERT INTO  `pacjenci` (`Pesel`,`Imie`, `Nazwisko`, `DataUrodzenia`, `MiejsceUrodzenia`,`AdresZamieszkania`,`KodPocztowy`,`Miasto`,`Telefon`,`Email`) VALUES ('"+tfPesel.getText()+"','"+tfName.getText()+"','"+tfSurname.getText()+"','"+tfBirthDate.getText()+"','"+tfBirthPlace.getText()+"','"+tfAdres.getText()+"','"+tfPostCode.getText()+"','"+tfCity.getText()+"','"+tfTelephone.getText()+"','"+tfEmail.getText()+"');";
                     statement = DBConnection.dbConnection.prepareStatement(sql);
