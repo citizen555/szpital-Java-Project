@@ -125,6 +125,19 @@ public class PatientsPanel extends JFrame{
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if(!DataCorectness.pesel(tfPesel.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Pesel musi zawierać 11 cyfr");
+                    return;
+                }
+                if(!DataCorectness.name(tfName.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Imie musi zawierać wyłacznie litery");
+                    return;
+                }
+                if(!DataCorectness.name(tfSurname.getText())){
+                    JOptionPane.showMessageDialog(patientsPanel, "Nazwisko musi zawierać wyłacznie litery");
+                    return;
+                }
                 try{
                     String sql="INSERT INTO  `pacjenci` (`Pesel`,`Imie`, `Nazwisko`, `DataUrodzenia`, `MiejsceUrodzenia`,`AdresZamieszkania`,`KodPocztowy`,`Miasto`,`Telefon`,`Email`) VALUES ('"+tfPesel.getText()+"','"+tfName.getText()+"','"+tfSurname.getText()+"','"+tfBirthDate.getText()+"','"+tfBirthPlace.getText()+"','"+tfAdres.getText()+"','"+tfPostCode.getText()+"','"+tfCity.getText()+"','"+tfTelephone.getText()+"','"+tfEmail.getText()+"');";
                     statement = DBConnection.dbConnection.prepareStatement(sql);
