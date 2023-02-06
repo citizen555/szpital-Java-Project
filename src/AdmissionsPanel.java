@@ -11,6 +11,8 @@ import java.sql.SQLException;
 public class AdmissionsPanel extends JFrame{
     PreparedStatement statement=null;
     ResultSet result=null;
+    public static DefaultTableModel Model;
+    public static int selectedRow;
     private JPanel admissionsPanel;
     private JButton btnBack;
     private JScrollPane scrollPaneAdmissions;
@@ -28,6 +30,7 @@ public class AdmissionsPanel extends JFrame{
     private JTextField tfDoctor;
     private JTextField tfDate;
     private JTextField tfHour;
+    private JButton btnMore;
 
     public AdmissionsPanel() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,6 +41,10 @@ public class AdmissionsPanel extends JFrame{
         showData();
         tableAdmissions.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tableAdmissions.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+
+        Model=(DefaultTableModel) tableAdmissions.getModel();
+
+
 
 
         btnBack.addActionListener(new ActionListener() {
@@ -63,6 +70,7 @@ public class AdmissionsPanel extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 DefaultTableModel tempModel =(DefaultTableModel) tableAdmissions.getModel();
+                selectedRow=tableAdmissions.getSelectedRow();
                 int selectedRow=tableAdmissions.getSelectedRow();
                 tfPesel.setText(tempModel.getValueAt(selectedRow,1).toString());
                 tfDiagnosis.setText(tempModel.getValueAt(selectedRow,2).toString());
@@ -116,10 +124,9 @@ public class AdmissionsPanel extends JFrame{
                     return;
                 }
                 if(!DataCorectness.time(tfHour.getText())){
-                    JOptionPane.showMessageDialog(admissionsPanel, "Data musi być w formacie rrrr-mm-dd");
+                    JOptionPane.showMessageDialog(admissionsPanel, "Godzina musi być w formacie hh:mm:ss");
                     return;
                 }
-
 
                 try{
                     String sql="INSERT INTO  `przyjecie` (`PeselPacjenta`,`IDdiagnozy`, `IDLekarzProwadzacy`, `DataPrzyjecia`, `GodzinaPrzyjecia`) VALUES ('"+tfPesel.getText()+"','"+tfDiagnosis.getText()+"','"+tfDoctor.getText()+"','"+tfDate.getText()+"','"+tfHour.getText()+"');";
@@ -133,6 +140,21 @@ public class AdmissionsPanel extends JFrame{
                 }
             }
         });
+
+        btnMore.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (selectedRow!=-1){JFrame AdmissionsPanel = new AdmissionsMoreData(selectedRow, Model);
+                    AdmissionsPanel.setVisible(true);
+                    //dispose();
+                }else {
+                    JOptionPane.showMessageDialog(admissionsPanel,"Wybierz przypadek z listy");
+                }
+                selectedRow=-1;
+
+            }
+            }
+        );
     }
 
     public void showData(){

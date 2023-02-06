@@ -43,15 +43,19 @@ public abstract class DataCorectness {
     }
     //Hour
     public static boolean time(String data){
-        String format = "hh-mm-ss";
-        try {
-            SimpleDateFormat timeFormat = new SimpleDateFormat(format);
-            timeFormat.setLenient(false);
-            timeFormat.parse(data);
-            return true;
-        } catch (ParseException e) {
-            return false;
+        Pattern pattern = Pattern.compile("[^[0-9]\\s]");
+        Matcher matcher = pattern.matcher(data);
+        if (matcher.find()){
+            try {
+                SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+                format.setLenient(false);
+                format.parse(data);
+                return true;
+            } catch (ParseException e) {
+                return false;
+            }
         }
+        return false;
     }
     //Postcode
     public static boolean postCode(String data){
