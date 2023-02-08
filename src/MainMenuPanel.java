@@ -3,12 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainMenuPanel extends JFrame {
-    private JButton btnClose;
-    private JPanel optionsPanel;
-    private JButton btnLogOut;
-    private JButton btnPatients;
-    private JButton btnAdmissions;
-    private JButton btnDoctors;
+    JButton btnClose;
+    JPanel optionsPanel;
+    JButton btnLogOut;
+    JButton btnPatients;
+    JButton btnAdmissions;
+    JButton btnDoctors;
     private JLabel lbLogin;
 
     public MainMenuPanel(String correctLogin) {

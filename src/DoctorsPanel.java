@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class DoctorsPanel extends JFrame{
     PreparedStatement statement=null;
     ResultSet result=null;
-    private JButton btnBack;
+    JButton btnBack;
     private JPanel doctorsPanel;
     private JTable tableDoctors;
     private JScrollPane scrollPaneDoctors;
@@ -211,10 +211,3 @@ public class DoctorsPanel extends JFrame{
     }
 
 }
-
-
-
-
-
-
-
