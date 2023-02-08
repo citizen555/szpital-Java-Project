@@ -12,8 +12,8 @@ public class AdmissionsMoreData extends JFrame{
     int selectedRow;
     DefaultTableModel Model;
     private JScrollPane scrollPaneAdmissionsMoreData;
-    private JTable tableAdmissionsMoreData;
-    private JButton btnBack;
+    JTable tableAdmissionsMoreData;
+    JButton btnBack;
     private JPanel admissionsMoreData;
 
     public AdmissionsMoreData(int selectedRow, DefaultTableModel Model) {

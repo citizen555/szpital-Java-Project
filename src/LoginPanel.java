@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class LoginPanel extends JFrame{
     private JPanel mainPanel;
-    private JTextField tfLogin;
-    private JPasswordField pfPassword;
-    private JButton btnLogin;
-    private JButton btnClose;
+    JTextField tfLogin;
+    JPasswordField pfPassword;
+    JButton btnLogin;
+    JButton btnClose;
 
     private String test;
     public LoginPanel() {

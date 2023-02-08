@@ -4,7 +4,7 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class DBConnection {
-    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String url = "jdbc:mysql://localhost:3306/testowa";
     private static final String user = "root";
     private static final String password = "";
     public static Connection dbConnection=null;
